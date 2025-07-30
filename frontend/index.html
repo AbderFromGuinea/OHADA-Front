@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assistant OHADA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>⚖️ Assistant Juridique OHADA</h1>
+
+    <textarea id="question" placeholder="Ex: Quelles sont les conditions de création d'une SARL ?"></textarea>
+    <button onclick="askQuestion()">🔍 Obtenir une réponse</button>
+
+    <h2>Réponse :</h2>
+    <div id="answer" class="box"></div>
+
+    <h2>Sources :</h2>
+    <div id="sources" class="box"></div>
+  </div>
+
+  <script>
+    async function askQuestion() {
+      const question = document.getElementById("question").value;
+      const answerBox = document.getElementById("answer");
+      const sourcesBox = document.getElementById("sources");
+
+      answerBox.textContent = "⏳ Chargement...";
+      sourcesBox.textContent = "";
+
+      try {
+        const response = await fetch("https://ohada.onrender.com/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question })
+        });
+
+        const data = await response.json();
+        answerBox.textContent = data.answer || "❌ Aucune réponse obtenue.";
+        sourcesBox.textContent = data.sources || "Aucune source disponible.";
+      } catch (err) {
+        answerBox.textContent = "❌ Erreur lors de la requête.";
+        sourcesBox.textContent = "";
+        console.error(err);
+      }
+    }
+  </script>
+</body>
+</html>
