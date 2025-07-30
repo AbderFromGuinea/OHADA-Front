@@ -13,6 +13,22 @@
     <textarea id="question" placeholder="Ex: Quelles sont les conditions de création d'une SARL ?"></textarea>
     <button onclick="askQuestion()">🔍 Obtenir une réponse</button>
 
+    <div class="suggestions">
+      <h3>💡 Questions suggérées :</h3>
+      <div class="suggestion-buttons">
+        <button onclick="setQuestion(this)">📦 De quoi est constitué un contrat de transport ?</button>
+        <button onclick="setQuestion(this)">🧾 C'est quoi une lettre de voiture ?</button>
+        <button onclick="setQuestion(this)">💱 Comment se passe la conversion monétaire ?</button>
+        <button onclick="setQuestion(this)">📍 Qui est responsable d'une livraison non effectuée ?</button>
+        <button onclick="setQuestion(this)">👤 Qui nomme le médiateur ?</button>
+        <button onclick="setQuestion(this)">🌍 Quelles sont les langues de travail de l'OHADA ?</button>
+        <button onclick="setQuestion(this)">⚖️ Quel est le rôle du juge ?</button>
+        <button onclick="setQuestion(this)">⏱️ Quand est-on coupable ?</button>
+        <button onclick="setQuestion(this)">🏛️ Quels sont les principaux droits des sociétés ?</button>
+        <button onclick="setQuestion(this)">🔄 Quelle est la procédure de redressement judiciaire ?</button>
+      </div>
+    </div>
+
     <h2>Réponse :</h2>
     <div id="answer" class="box"></div>
 
@@ -21,6 +37,12 @@
   </div>
 
   <script>
+    function setQuestion(btn) {
+      const question = btn.textContent;
+      document.getElementById("question").value = question;
+      askQuestion(); // Lancer directement la recherche si souhaité
+    }
+
     async function askQuestion() {
       const question = document.getElementById("question").value;
       const answerBox = document.getElementById("answer");
