@@ -59,7 +59,7 @@ h1 {
 .suggestion-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 0.5rem;
+  gap: 0.7rem;
   margin-top: 0.5rem;
 }
 
