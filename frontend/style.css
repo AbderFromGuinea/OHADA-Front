@@ -61,6 +61,7 @@ h1 {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 0.7rem;
   margin-top: 0.5rem;
+  color: black;
 }
 
 .suggestion-buttons button {
@@ -71,8 +72,8 @@ h1 {
   cursor: pointer;
   transition: background 0.2s ease;
   text-align: left;
-  font-size: 14px;
   color: black;
+  font-size: 14px;
 }
 
 .suggestion-buttons button:hover {
